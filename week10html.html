@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>RPG Character Idea Table</title>
+
+ <!-- Include Bootstrap CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+ <div class="container">
+ <h1>RPG Character Idea Table</h1>
+
+ <!-- Table -->
+ <table id="rPG" class="table table-bordered">
+ <thead>
+ <tr>
+ <th>Name</th>
+ <th>Race</th>
+ <th>Class</th>
+ <th>Gender</th>
+ <th>Backstory</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Shazgob the Wizened</td>
+ <td>Orc</td>
+ <td>Mage</td>
+ <td>Female</td>
+ <td>Shazgob the Wizened is a female orc who is ridiculed by her clan for practicing magic and posessing high intellect. She left her home lands when she was old enough to fend for her self and find her place in the world and learn more about magic.<tbody>
+ <tr>
+ <td>Danielito</td>
+ <td>Goblin</td>
+ <td>Barbarian</td>
+ <td>Male</td>
+ <td>Danielito is a barbarian goblin with an obsession for cheese sticks. His twin sister disapeared and he is on a quest to find her. He has a quick temper and loves to fight.</td>
+ </tr>
+ </tbody></td>
+ </tr>
+ </tbody>
+ <tbody>
+    <tr>
+    <td>Lae Mella</td>
+    <td>High Elf</td>
+    <td>Wizard</td>
+    <td>Female</td>
+    <td>Lae Mella is a wizard high elf with royal blood. She was stolen from her kingdom at a young age. After finding out about who she was, she is on a quest to return to her lands and her people.</td>
+    </tr>
+    </tbody>
+    <tbody>
+        <tr>
+        <td>Teodosio</td>
+        <td>Cleric</td>
+        <td>Human</td>
+        <td>Male</td>
+        <td>Teodosio is a human cleric who worships a long dead god. He is one of the few followers left. He is on the hunt to revive his religion and bring back his god to the lands.</td>
+        </tr>
+        </tbody>
+        <tbody>
+            <tr>
+            <td>Cyndral Novek</td>
+            <td>Dark Elf</td>
+            <td>Necromancer</td>
+            <td>Female</td>
+            <td>Cyndral Novek is a dark elf necromancer with a thirst for revenge. Her people were wiped out by an ancient evil. She turned to necromancy to revenger her people and bring them back at whatever cost.</td>
+            </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                <td>Marco Ulpio Trajano</td>
+                <td>Eldritch Knight</td>
+                <td>Dragonborn</td>
+                <td>Male</td>
+                <td>Marco Ulpio Trajano was a famed general who won many great battles. His rival was able to get him expelled from the military due to politics and dishonor his name and strip him of his fortune. Since that day, Marco has been on the search to get back what was taken from him and restore his name.</td>
+                </tr>
+                </tbody>
+ </table>
+
+
+
+<script src="week10js.js"></script>
+
+
+
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>RPG Character Creation</h1>
+  <!-- Form -->
+  <form id="characterForm">
+    <div class="form-group">
+      <label for="nameInput">Name</label>
+      <input type="text" class="form-control" id="nameInput" name="nameInput" required>
+    </div>
+    <div class="form-group">
+      <label for="raceInput">Race</label>
+      <input type="text" class="form-control" id="raceInput" name="raceInput" required>
+    </div>
+    <div class="form-group">
+      <label for="classInput">Class</label>
+      <input type="text" class="form-control" id="classInput" name="classInput" required>
+    </div>
+    <div class="form-group">
+      <label for="genderInput">Gender</label>
+      <input type="text" class="form-control" id="genderInput" name="genderInput" required>
+    </div>
+    <div class="form-group">
+      <label for="backstoryInput">Backstory</label>
+      <textarea class="form-control" id="backstoryInput" name="backstoryInput" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Character</button>
+  </form>
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!-- JavaScript code to handle form submission -->
+<script>
+  document.getElementById("characterForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get input values
+    const name = document.getElementById("nameInput").value;
+    const race = document.getElementById("raceInput").value;
+    const characterClass = document.getElementById("classInput").value;
+    const gender = document.getElementById("genderInput").value;
+    const backstory = document.getElementById("backstoryInput").value;
+
+    // Create a new table row with the input values
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${race}</td>
+      <td>${characterClass}</td>
+      <td>${gender}</td>
+      <td>${backstory}</td>
+    `;
+
+    // Append the new row to the table
+    document.getElementById("rPG").getElementsByTagName("tbody")[0].appendChild(newRow);
+
+    // Reset form fields
+    document.getElementById("characterForm").reset();
+  });
+</script>
+</body>
+
+
+
+
+
+
+<div id="diceRollResult"></div>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice for RPG game</title>
+    <script>
+        function rollDice() {
+            // Generate a random number between 1 and 6
+            var diceValue = Math.floor(Math.random() * 6) + 1;
+
+            // Display the dice value in the HTML element with id "diceResult"
+            document.getElementById("diceResult").innerHTML = "The dice rolled: " + diceValue;
+        }
+    </script>
+</head>
+<body>
+    <h1>Dice Roll for RPG</h1>
+    <button onclick="rollDice()">Roll the dice</button>
+    <p id="diceResult"></p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+ .highlighted {
+ background-color: rgb(96, 227, 231);
+ }
+ </style>
+</head>
+<body>
+
+
+ <script>
+ window.onload = function() {
+ var rows = document.getElementsByTagName("tr");
+ for (var i = 0; i < rows.length; i++) {
+ rows[i].addEventListener("mouseover", function() {
+ this.classList.add("highlighted");
+ });
+ rows[i].addEventListener("mouseout", function() {
+ this.classList.remove("highlighted");
+ });
+ }
+ };
+ </script>
+</body>
+</html>
+
+
+
+
